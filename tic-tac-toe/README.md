@@ -64,3 +64,8 @@ At that point when the current match is over, a notification will displayed aski
 Player class possesses name of the player, symbol player uses, record of moves and we also need to check if player is winner. Player is able to make move in each turn, then declare self is the winner.
 
 Board class owns the grid and a list of players. Also board has the win conditions which is an array containing all the possible winning scenarios. Board can add players to itself and start a game.
+
+#### Notices
+
+1. Players cannot goes to checked position on the board, which means that if any of two players makes move on a marked cell the program would ask them to choose another selection.
+2. Draw condition is that when all cells on the board are marked but no one meets the win conditions.
