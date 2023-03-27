@@ -56,7 +56,7 @@ class Player
   end
 
   def check_valid_selection
-    negative_pos?() || pos_already_chosen?() || pos_out_of_grid?()
+    negative_pos? || pos_already_chosen? || pos_out_of_grid?
   end
 
   def negative_pos?
