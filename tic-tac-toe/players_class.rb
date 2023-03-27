@@ -60,10 +60,12 @@ class Player
   end
 
   def negative_pos?
+    row, col = ask_selection
     position(row, col).negative?
   end
 
   def pos_already_chosen?
+    row, col = ask_selection
     board.chosen_cells.include?(position(row, col)) || scores.include?(position(row, col))
   end
 
