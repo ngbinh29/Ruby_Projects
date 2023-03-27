@@ -23,7 +23,7 @@ class Board
   end
 
   def draw_condition
-    puts 'Draw' if turn_count == 9 && winner_name.empty?
+    turn_count == 9 && winner_name.empty?
   end
 
   def display_grid
@@ -45,15 +45,13 @@ class Board
   # ? should we create the main loop game method inside the class
   def start_game
     loop do
-      player_one = players[0]
-      player_two = players[1]
+      player_one, player_two = players
       player_one.turn
-      break if player_one.is_winner
+      break if player_one.is_winner ||draw_condition
 
       player_two.turn
-      break if player_two.is_winner
+      break if player_two.is_winner || draw_condition
 
-      draw_condition
     end
   end
 end
