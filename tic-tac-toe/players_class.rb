@@ -25,20 +25,24 @@ class Player
     win.each do |condition|
       @is_winner ||= !is_winner if scores.intersection(condition).sort == condition
     end
-    board.winner_name = name if is_winner
+    if is_winner
+      board.winner_name = name
+      puts "player #{name} #{symbol} is the winner!"
+    end
   end
 
   def turn
     selection = ask_selection
     row, col = selection
-    if scores.include?(position(row, col)) || position(row, col).negative? || board.chosen_cells.include?(position(row, col))
+    # TODO this line of code need to be refactored
+    if check_valid_selection
       turn
     else
       goes_to(row, col)
       board.display_grid
       winner
     end
-    puts "player #{name} #{symbol} is the winner!" if is_winner
+    puts 'Draw' if board.draw_condition
   end
 
   def ask_selection
@@ -49,5 +53,21 @@ class Player
     selection << row
     selection << column
     selection
+  end
+
+  def check_valid_selection
+    negative_pos?() || pos_already_chosen?() || pos_out_of_grid?()
+  end
+
+  def negative_pos?
+    position(row, col).negative?
+  end
+
+  def pos_already_chosen?
+    board.chosen_cells.include?(position(row, col)) || scores.include?(position(row, col))
+  end
+
+  def pos_out_of_grid?
+    ask_selection[0] > 3 || ask_selection[1] > 3
   end
 end
