@@ -46,12 +46,11 @@ class Player
   end
 
   def ask_selection
-    selection = []
     puts "player #{name} please enter row and column"
     row = gets.chomp.to_i
     column = gets.chomp.to_i
-    selection << row
-    selection << column
-    selection
+    return [row, column] if [row, column].all? { |val| (1..3).include?(val) }
+
+    ask_selection
   end
 end
