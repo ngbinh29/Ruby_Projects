@@ -47,7 +47,7 @@ class Board
     loop do
       player_one, player_two = players
       player_one.turn
-      break if player_one.is_winner ||draw_condition
+      break if player_one.is_winner || draw_condition
 
       player_two.turn
       break if player_two.is_winner || draw_condition
