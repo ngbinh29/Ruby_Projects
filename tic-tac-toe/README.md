@@ -68,4 +68,5 @@ Board class owns the grid and a list of players. Also board has the win conditio
 #### Notices
 
 1. Players cannot goes to checked position on the board, which means that if any of two players makes move on a marked cell the program would ask them to choose another selection.
-2. Draw condition is that when all cells on the board are marked but no one meets the win conditions.
+2. Also players are only allowed to make move on cells on the board grid.
+3. Draw condition is that when all cells on the board are marked but no one meets the win conditions.
